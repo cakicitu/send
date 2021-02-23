@@ -1,17 +1,66 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Byrds Capacitor Contacts </ion-title>
+    <ion-title> Kontakte </ion-title>
   </ion-toolbar>
 </ion-header>
+<!-- <ion-content>
+  <ion-button expand="full" (click)="whatsappShare()"
+    >Whatsapp Share</ion-button
+  >
+  <ion-button expand="full" (click)="instagrammShare()"
+    >instagram Share</ion-button
+  >
+  <ion-button expand="full" (click)="facebookShare()"
+    >facebook Share</ion-button
+  >
+  <ion-button expand="full" (click)="twitterShare()">twitter Share</ion-button>
+  <ion-button expand="full" (click)="emailShare()">email Share</ion-button>
+  <ion-button expand="full" (click)="loadContacts()">Load Contacts</ion-button>
+</ion-content> -->
+
+<!-- <ion-button expand="full" (click)="loadContacts()">Kontakte Laden</ion-button> -->
 
 <ion-content>
   <ion-item-sliding *ngFor="let c of contacts">
     <ion-item>
       <ion-label>
         {{ c.displayName}}
-        <p>{{c.phoneNumbers[0]}}</p>
+        <p>{{c.phoneNumbers[0].number}}</p>
+        <!-- <p>{{c.emails[0].address}}</p> -->
       </ion-label>
+      <ion-icon side="end" name="chevron-back-outline"></ion-icon>
     </ion-item>
+
+    <!-- <ion-button expand="full" (click)="basicShare()">Basic Share</ion-button> -->
+    <!-- <ion-button expand="full" (click)="shareImage()">Image Share</ion-button>
+    <ion-button expand="full" (click)="shareLocalFile()">File Share</ion-button> -->
+
+    <ion-item-options side="end">
+      <ion-item-option
+        (click)="sendSms(c.phoneNumbers[0].number)"
+        color="secondary"
+      >
+        <ion-icon name="send"></ion-icon>
+      </ion-item-option>
+      <ion-item-option (click)="whatsappShare()" color="success">
+        <ion-icon name="logo-whatsapp"></ion-icon>
+      </ion-item-option>
+      <ion-item-option (click)="facebookShare()" color="primary">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-item-option>
+      <ion-item-option (click)="twitterShare()" color="secondary">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-item-option>
+      <ion-item-option (click)="instagramShare()" color="danger">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </ion-item-option>
+      <ion-item-option
+        (click)="emailShare(c.emails[0].address)"
+        color="warning"
+      >
+        <ion-icon name="mail-outline"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
   </ion-item-sliding>
 </ion-content>
 
